@@ -151,4 +151,16 @@ describe "Event#occurrences_between" do
       expect(occurrences.first.start_time).to eq(Time.parse("20140114T180000Z"))
     end
   end
+
+  context "every other day excluded" do
+    let(:event) { example_event :every_other_day_excluded }
+  
+    it "occurs 3 times over 6 days" do
+      occurrences = event.occurrences_between(start_time, start_time + 5.days)
+  
+      expect(occurrences.length).to eq(2)
+      expect(occurrences[0].start_time).to eq(Time.parse("2014-01-29"))
+      expect(occurrences[1].start_time).to eq(Time.parse("2014-01-31"))
+    end
+  end
 end
