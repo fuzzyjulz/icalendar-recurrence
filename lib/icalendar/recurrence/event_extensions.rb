@@ -14,8 +14,8 @@ module Icalendar
       end
 
       def occurrences_between(begin_time, closing_time, spans: false)
-        schedule.occurrences_between(begin_time, closing_time, spans: spans) #\
-        #.delete_if { |occ| self.exdate.include?(occ.start_time) }
+        schedule.occurrences_between(begin_time, closing_time, spans: spans)\
+        .delete_if { |occ| self.exdate.include?(occ.start_time) }
       end
 
       def schedule
